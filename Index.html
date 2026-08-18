@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
+<title>DGEHS Medical Reimbursement Claims</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@1.31.0/dist/umd/lucide.min.js" integrity="sha384-/ApD3KXMqTmTxEJjuldaZDgdJj7/Hox2LRuKqV3rC7Bu/wE4obLaJRjF1rLHNP57" crossorigin="anonymous"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['"Times New Roman"', 'Times', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+        },
+        colors: {
+          primary: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' },
+          slate: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155', 800: '#1e293b', 900: '#0f172a' },
+        }
+      }
+    }
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style/style.css">
+
+</head>
+<body class="bg-slate-100 min-h-screen">
+
+<nav class="no-print bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      <div class="flex items-center gap-3">
+        <div class="bg-primary-600 text-white p-2 rounded-lg">
+          <i data-lucide="stethoscope" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h1 class="text-lg font-bold text-slate-800 leading-tight">DGEHS Claims</h1>
+          <p class="text-xs text-slate-500">Medical Reimbursement Portal</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="app.goToSetup()" class="hidden sm:flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 hover:text-primary-600 hover:bg-slate-50 rounded-lg transition-colors">
+          <i data-lucide="settings" class="w-4 h-4"></i>
+          <span>Common Details</span>
+        </button>
+        <button onclick="app.goHome()" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 hover:text-primary-600 hover:bg-slate-50 rounded-lg transition-colors">
+          <i data-lucide="home" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Home</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+<div id="setup-screen" class="screen active">
+
+
+  <div class="app-shell">
+
+    <!-- Background decorative shapes -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <!-- HERO -->
+    <main class="hero">
+
+        <!-- LEFT CONTENT -->
+        <section class="hero-left">
+
+          
+            <h1>
+                DGEHS Medical Claim, Made Simple
+            </h1>
+
+            <p class="hero-description">
+                Generate Annexure 3, 4 &amp; 5 documents in PDF<br>
+                and Excel format with ease.
+            </p>
+
+
+            <!-- Small Features -->
+            <div class="mini-features">
+
+                <div class="mini-feature">
+                    <div class="mini-icon green">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+
+                    <div class="mini-content">
+                        <strong>100% Secure</strong>
+                        <span>Your data stays<br>on your device</span>
+                    </div>
+                </div>
+
+                <div class="mini-feature">
+                    <div class="mini-icon blue">
+                        <i data-lucide="file-text"></i>
+                    </div>
+
+                    <div class="mini-content">
+                        <strong>Multiple Formats</strong>
+                        <span>Export in PDF<br>and Excel</span>
+                    </div>
+                </div>
+
+                <div class="mini-feature">
+                    <div class="mini-icon purple">
+                        <i data-lucide="users"></i>
+                    </div>
+
+                    <div class="mini-content">
+                        <strong>Multi-Patient</strong>
+                        <span>Generate separate<br>documents</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <button class="primary-btn" onclick="scrollToCommonDetails()">
+                <span>Get Started</span>
+                <i data-lucide="arrow-right"></i>
+            </button>
+
+        </section>
+
+
+        <!-- RIGHT ILLUSTRATION -->
+        <section class="hero-right">
+
+            <div class="illustration-glow"></div>
+
+            <div class="floating-dot dot-1"></div>
+            <div class="floating-dot dot-2"></div>
+            <div class="floating-dot dot-3"></div>
+
+            <!-- Replace this image path with your Annexure illustration -->
+           <div class="image-group">
+                <img
+                    src="images/annexure-illustration.png"
+                    alt="Medical reimbursement annexure documents"
+                    class="hero-image"
+                >
+                <div class="shadow-oval"></div>
+            </div>
+
+            
+
+        </section>
+
+    </main>
+
+
+    <!-- BOTTOM CONTENT -->
+    <section class="bottom-section">
+
+        <!-- WHY CHOOSE -->
+        <div class="panel">
+
+            <h2 class="panel-title">
+                Why Choose Our Tool?
+            </h2>
+
+            <div class="why-grid">
+
+                <div class="why-card">
+                    <div class="round-icon green">
+                        <i data-lucide="zap"></i>
+                    </div>
+
+                    <h3>Fast &amp; Efficient</h3>
+
+                    <p>
+                        Generate claims in just<br>
+                        a few simple steps.
+                    </p>
+                </div>
+
+
+                <div class="why-card">
+                    <div class="round-icon blue">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+
+                    <h3>Accurate &amp; Reliable</h3>
+
+                    <p>
+                        Pre-filled government<br>
+                        approved formats.
+                    </p>
+                </div>
+
+
+                <div class="why-card">
+                    <div class="round-icon purple">
+                        <i data-lucide="arrow-down"></i>
+                    </div>
+
+                    <h3>Easy Export</h3>
+
+                    <p>
+                        Download and print<br>
+                        anytime, anywhere.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HOW IT WORKS -->
+        <div class="panel">
+
+            <div class="how-heading">
+
+                <h2 class="panel-title">
+                    How It Works
+                </h2>
+
+                <div class="simple-badge">
+                    4 Simple Steps
+                </div>
+
+            </div>
+
+
+            <div class="steps">
+
+                <div class="step">
+                    <div class="step-icon">
+                        <i data-lucide="file-pen-line"></i>
+                    </div>
+
+                    <strong>Step 1</strong>
+                    <span>Fill Common<br>Details</span>
+                </div>
+
+
+                <div class="step">
+                    <div class="step-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+
+                    <strong>Step 2</strong>
+                    <span>Add Patient<br>Information</span>
+                </div>
+
+
+                <div class="step">
+                    <div class="step-icon">
+                        <i data-lucide="file-text"></i>
+                    </div>
+
+                    <strong>Step 3</strong>
+                    <span>Review &amp; Generate<br>Annexures</span>
+                </div>
+
+
+                <div class="step">
+                    <div class="step-icon">
+                        <i data-lucide="download"></i>
+                    </div>
+
+                    <strong>Step 4</strong>
+                    <span>Download PDF<br>or Excel</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+ <!-- Bottom Security Alert Banner -->
+    <div class="security-banner">
+      <div class="banner-icon">
+        <i data-lucide="shield-check"></i>
+      </div>
+      <div class="banner-content">
+        <h3>Nothing you type ever leaves this page.</h3>
+        <p>Your details stay safely on your own computer — not sent to us, not sent anywhere. You're always in control.</p>
+      </div>
+    </div>
+
+</div>
+
+  
+  <!-- Main Section Above Fold -->
+
+
+ <div id="common-details-section" class="bg-white rounded-2xl border border-slate-200 shadow-sm mb-6 overflow-hidden common-details-section">
+        <h2 class="main-title">Common Details</h2>
+       <!-- Info Line -->
+  <div class="bg-blue-50 border border-blue-100 rounded-lg p-3 mb-6 flex items-center gap-3">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    <p class="text-sm text-blue-800">These details are saved automatically in your browser and reused across all generated forms.</p>
+  
+  
+  
+  </div>
+
+     <!-- Import Backup -->
+      <div class="bg-white border border-slate-200 rounded-xl p-5 mb-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-slate-800">Import Previous Claim</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Upload a previously exported .json file to restore all details instantly.</p>
+          </div>
+        </div>
+        <label class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-blue-700 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Choose File
+          <input type="file" accept=".json" class="hidden" onchange="app.importData(this)">
+        </label>
+      </div>
+</div>
+
+
+     
+
+  <!-- Office / School Details -->
+  <div id="office-school-details" class=" bg-white rounded-2xl border border-slate-200 shadow-sm mb-6 overflow-hidden">
+    <div class="p-6 sm:p-8">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6"/></svg>
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-slate-800">Office / School Details</h2>
+          <p class="text-sm text-slate-500">Provide your school or office information.</p>
+        </div>
+      </div>
+      
+      <div class="space-y-5">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">To (School / Office Address)<span class="text-red-500">*</span></label>
+          <textarea id="to-address" rows="3" placeholder="The Principal&#10;School Name&#10;Address" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-y"></textarea>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+
+
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Designation<span class="text-red-500">*</span></label>
+            <div class="relative">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              <input type="text" id="designation" placeholder="e.g. Teacher, Clerk" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Place of Posting<span class="text-red-500">*</span></label>
+            <div class="relative">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <input type="text" id="place-of-posting" value="New Delhi" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Basic Pay</label>
+            <div class="relative">
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 lucide lucide-indian-rupee-icon lucide-indian-rupee"><path d="M6 3h12"/><path d="M6 8h12"/><path d="m6 13 8.5 8"/><path d="M6 13h3"/><path d="M9 13c6.667 0 6.667-10 0-10"/></svg>
+
+              
+              <input type="text" id="basic-pay" placeholder="e.g. 50000" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Employee Details -->
+  <div class="bg-white rounded-2xl border border-slate-200 shadow-sm mb-6 overflow-hidden">
+    <div class="p-6 sm:p-8">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 bg-violet-100 text-violet-600 rounded-lg flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-slate-800">Employee Details</h2>
+          <p class="text-sm text-slate-500">Provide DGEHS card holder information.</p>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">DGEHS Card Holder Name<span class="text-red-500">*</span></label>
+          <div class="relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input type="text" id="card-holder-name" placeholder="Enter full name" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">Select Date<span class="text-red-500">*</span></label>
+          <div class="relative">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <input type="date" id="claim-date" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+          </div>
+        </div>
+      </div>
+
+      <!-- DGEHS Card Info Sub-section -->
+      <div class="pt-6 border-t border-slate-100">
+        <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wide mb-4">DGEHS Card Information</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-5 mb-5">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">DGEHS Card No.<span class="text-red-500">*</span></label>
+            <input type="text" id="dgehs-card-no" placeholder="e.g. DL-12345" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Place of Issue<span class="text-red-500">*</span></label>
+            <input type="text" id="card-place-issue" placeholder="e.g. Delhi" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Ward Entitlement</label>
+            <select id="ward-entitlement" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+              <option value="">Select</option>
+              <option value="General">General</option>
+              <option value="Semi Private">Semi Private</option>
+              <option value="Private">Private</option>
+            </select>
+          </div>
+        
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Validity From</label>
+            <input type="date" id="validity-from" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Validity To</label>
+            <input type="text" id="validity-to" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+          </div>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Details -->
+  <div class="bg-white rounded-2xl border border-slate-200 shadow-sm mb-6 overflow-hidden">
+    <div class="p-6 sm:p-8">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-slate-800">Contact Details</h2>
+          <p class="text-sm text-slate-500">Address and communication information.</p>
+        </div>
+      </div>
+      
+      <div class="mb-5">
+        <label class="block text-sm font-medium text-slate-700 mb-1.5">Full Address</label>
+        <textarea id="full-address" rows="2" placeholder="House No, Street, Colony, City, PIN" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-y"></textarea>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">Telephone (Office)</label>
+          <input type="text" id="telephone-office" placeholder="011-XXXX XXXX" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">Telephone (Mobile)</label>
+          <input type="text" id="telephone-mobile" placeholder="98XXXXXXXX" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">E-mail Address</label>
+          <input type="email" id="email-address" placeholder="name@example.com" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bank Details -->
+  <div class="bg-white rounded-2xl border border-slate-200 shadow-sm mb-8 overflow-hidden">
+    <div class="p-6 sm:p-8">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 10h18"/><path d="M5 6l7-4 7 4"/><path d="M4 10v11"/><path d="M20 10v11"/><path d="M8 14v3"/><path d="M12 14v3"/><path d="M16 14v3"/></svg>
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-slate-800">Bank Details</h2>
+          <p class="text-sm text-slate-500">For reimbursement transfer.</p>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">Bank Name</label>
+          <input type="text" id="bank-name" placeholder="e.g. State Bank of India" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">Branch</label>
+          <input type="text" id="bank-branch" placeholder="e.g. Connaught Place" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-5 mb-5">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">SB A/C No.</label>
+          <input type="text" id="bank-account" placeholder="Account Number" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">MICR Code</label>
+          <input type="text" id="micr-code" placeholder="e.g. 110002001" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">IFS Code</label>
+          <input type="text" id="ifsc-code" placeholder="e.g. SBIN0000691" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+        </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5">Tel. No. of Bank Branch</label>
+        <input type="text" id="bank-telephone" placeholder="011-XXXX XXXX" class="w-full  px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all">
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Hospital Details -->
+<div class="bg-white rounded-2xl border border-slate-200 shadow-sm mb-8 overflow-hidden">
+    
+    <div class="p-6 sm:p-8">
+
+        <!-- Section Header -->
+        <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 bg-rose-100 text-rose-600 rounded-lg flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/>
+                    <path d="M9 22v-4h6v4"/>
+                    <path d="M8 6h.01"/>
+                    <path d="M16 6h.01"/>
+                    <path d="M12 6h.01"/>
+                    <path d="M12 10h.01"/>
+                    <path d="M12 14h.01"/>
+                    <path d="M16 10h.01"/>
+                    <path d="M16 14h.01"/>
+                    <path d="M8 10h.01"/>
+                    <path d="M8 14h.01"/>
+                </svg>
+            </div>
+
+            <div>
+                <h2 class="text-lg font-bold text-slate-800">
+                    Hospital Details
+                </h2>
+
+                <p class="text-sm text-slate-500">
+                    One hospital per line if multiple hospitals were involved.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- Hospital Name -->
+        <div class="mb-6">
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">
+                Name of the Hospital with Address
+            </label>
+
+            <textarea
+                id="hospital-names"
+                rows="4"
+                placeholder="e.g. City Hospital, Punjabi Bagh, New Delhi&#10;MedPlus Diagnostics, Rohini, New Delhi"
+                class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+            ></textarea>
+        </div>
+
+
+        <!-- Treatment Details -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- OPD Treatment Column -->
+            <div>
+
+                <label class="block text-sm font-semibold text-slate-700 mb-3">
+                    OPD Treatment (Investigations) &amp; Period of Treatment
+                </label>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                    <!-- From -->
+                    <div>
+                        <label class="block text-xs font-medium text-slate-500 mb-1.5">
+                            From
+                        </label>
+
+                        <input
+                            type="date"
+                            id="opd-treatment-from"
+                            class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                        >
+                    </div>
+
+
+                    <!-- To -->
+                    <div>
+                        <label class="block text-xs font-medium text-slate-500 mb-1.5">
+                            To
+                        </label>
+
+                        <input
+                            type="date"
+                            id="opd-treatment-to"
+                            class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                        >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Indoor Treatment Column -->
+            <div>
+
+                <label class="block text-sm font-semibold text-slate-700 mb-3">
+                    Indoor Treatment: Date of Admission &amp; Date of Discharge
+                </label>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                    <!-- Date of Admission -->
+                    <div>
+                        <label class="block text-xs font-medium text-slate-500 mb-1.5">
+                            Date of Admission
+                        </label>
+
+                        <input
+                            type="date"
+                            id="indoor-admission-date"
+                            class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                        >
+                    </div>
+
+
+                    <!-- Date of Discharge -->
+                    <div>
+                        <label class="block text-xs font-medium text-slate-500 mb-1.5">
+                            Date of Discharge
+                        </label>
+
+                        <input
+                            type="date"
+                            id="indoor-discharge-date"
+                            class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                        >
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+  <!-- Bottom Action Bar -->
+  <div class="bottom-4 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-2xl shadow-lg p-4 flex flex-col sm:flex-row items-center justify-between gap-3 z-40">
+    <button onclick="app.clearStorage()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-red-700 bg-red-50 border border-red-200 rounded-xl hover:bg-red-100 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+      Clear Data
+    </button>
+    
+    <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+      <div id="save-status" class="hidden sm:flex items-center gap-2 text-sm font-medium text-emerald-600 opacity-0 transition-opacity duration-300 px-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span>Saved</span>
+      </div>
+      <button onclick="app.saveDraft()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-blue-700 bg-blue-50 border border-blue-200 rounded-xl hover:bg-blue-100 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Save Draft
+      </button>
+      <button onclick="app.saveSetup()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-medium text-white bg-blue-600 rounded-xl hover:bg-blue-700 shadow-sm shadow-blue-200 transition-all hover:shadow-md">
+        Save & Continue
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div id="home-screen" class="screen">
+  <div class="text-center mb-10">
+    <div class="inline-flex items-center justify-center w-16 h-16 bg-primary-100 text-primary-600 rounded-2xl mb-4">
+      <i data-lucide="heart-pulse" class="w-8 h-8"></i>
+    </div>
+    <h1 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-2">DGEHS Medical Reimbursement Claims</h1>
+    <p class="text-slate-500 max-w-md mx-auto">Central Government Health Scheme &mdash; Generate reimbursement forms instantly</p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
+    <button onclick="app.selectMode('single')" class="group relative bg-white rounded-2xl border-2 border-slate-200 p-6 sm:p-8 text-left hover:border-primary-400 hover:shadow-lg hover:shadow-primary-100 transition-all duration-300 hover:-translate-y-1">
+      <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+        <i data-lucide="arrow-right" class="w-5 h-5 text-primary-500"></i>
+      </div>
+      <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4">
+        <i data-lucide="user" class="w-6 h-6"></i>
+      </div>
+      <h3 class="text-lg font-bold text-slate-800 mb-1">Single Claim</h3>
+      <p class="text-sm text-slate-500 leading-relaxed">For one patient only. Generates Annexure 2 automatically alongside your selected annexure.</p>
+      <div class="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
+        <i data-lucide="sparkles" class="w-3 h-3"></i>
+        Auto-generates Annexure 2
+      </div>
+    </button>
+
+    <button onclick="app.selectMode('multiple')" class="group relative bg-white rounded-2xl border-2 border-slate-200 p-6 sm:p-8 text-left hover:border-primary-400 hover:shadow-lg hover:shadow-primary-100 transition-all duration-300 hover:-translate-y-1">
+      <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+        <i data-lucide="arrow-right" class="w-5 h-5 text-primary-500"></i>
+      </div>
+      <div class="w-12 h-12 bg-violet-100 text-violet-600 rounded-xl flex items-center justify-center mb-4">
+        <i data-lucide="users" class="w-6 h-6"></i>
+      </div>
+      <h3 class="text-lg font-bold text-slate-800 mb-1">More than One Claim</h3>
+      <p class="text-sm text-slate-500 leading-relaxed">For multiple patients. Generates Annexure 1 automatically with consolidated details.</p>
+      <div class="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-violet-600 bg-violet-50 px-2.5 py-1 rounded-full">
+        <i data-lucide="sparkles" class="w-3 h-3"></i>
+        Auto-generates Annexure 1
+      </div>
+    </button>
+  </div>
+
+  <div class="mt-8 text-center">
+    <button onclick="app.goToSetup()" class="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-primary-600 transition-colors">
+      <i data-lucide="settings" class="w-4 h-4"></i>
+      Edit Common Details
+    </button>
+  </div>
+</div>
+
+<div id="patient-screen" class="screen">
+  <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+    <div class="bg-gradient-to-r from-slate-800 to-slate-900 px-6 py-5 sm:px-8">
+      <div class="flex items-center gap-3">
+        <div class="bg-white/20 p-2 rounded-lg">
+          <i data-lucide="users" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <h2 class="text-xl font-bold text-white">Patient Details</h2>
+          <p class="text-slate-300 text-sm mt-0.5">Enter names of patients for reimbursement</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-6 sm:p-8">
+
+      <div id="single-patient-block" style="display:none;">
+        <div class="max-w-md mx-auto">
+          <label class="block text-sm font-semibold text-slate-700 mb-1.5">Patient Name</label>
+          <div class="relative">
+            <i data-lucide="user" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+            <input type="text" id="single-patient-name" placeholder="Enter patient name Eg. Kunal(son)" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all">
+          </div>
+        </div>
+      </div>
+
+      <div id="multiple-patient-block" style="display:none;">
+        <div class="bg-amber-50 border-l-4 border-amber-400 rounded-r-lg p-4 mb-6 flex items-start gap-3">
+          <i data-lucide="alert-circle" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"></i>
+          <div class="text-sm text-slate-700">
+            <p class="font-medium text-amber-800">Add all patients</p>
+            <p class="mt-0.5">You can add up to 10 patients. Your entries are preserved when adding more.</p>
+          </div>
+        </div>
+        <div id="patient-list" class="space-y-3"></div>
+        <button onclick="app.addPatient()" class="mt-4 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary-700 bg-primary-50 border border-primary-200 rounded-xl hover:bg-primary-100 transition-colors">
+          <i data-lucide="plus-circle" class="w-4 h-4"></i>
+          Add Another Patient
+        </button>
+      </div>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-100">
+        <button onclick="app.goToHome()" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-slate-600 bg-slate-100 rounded-xl hover:bg-slate-200 transition-colors w-full sm:w-auto">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          Back
+        </button>
+        <button onclick="app.savePatients()" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-medium text-white bg-primary-600 rounded-xl hover:bg-primary-700 shadow-sm shadow-primary-200 transition-all hover:shadow-md w-full sm:w-auto">
+          Next
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="annexure-choice-screen" class="screen">
+  <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+    <div class="bg-gradient-to-r from-primary-600 to-primary-700 px-6 py-5 sm:px-8">
+      <div class="flex items-center gap-3">
+        <div class="bg-white/20 p-2 rounded-lg">
+          <i data-lucide="file-text" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <h2 class="text-xl font-bold text-white">Select Annexure to Fill</h2>
+          <p class="text-primary-100 text-sm mt-0.5">Choose the form you want to generate</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-6 sm:p-8">
+      <div class="bg-blue-50 border-l-4 border-primary-500 rounded-r-lg p-4 mb-6 flex items-start gap-3">
+        <i data-lucide="lightbulb" class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5"></i>
+        <p class="text-sm text-slate-700">For Single Claim, choose which annexure you want to fill. <strong class="text-primary-700">Annexure 3 is recommended</strong> &mdash; Annexure 2 will auto-generate.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+        <button onclick="app.selectAnnexure('3')" class="group relative bg-white rounded-2xl border-2 border-emerald-200 p-6 text-left hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-100 transition-all duration-300 hover:-translate-y-1">
+          <div class="absolute top-3 right-3">
+            <span class="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-1 rounded-full">
+              <i data-lucide="star" class="w-3 h-3"></i>
+              Recommended
+            </span>
+          </div>
+          <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4">
+            <i data-lucide="clipboard-list" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-800 mb-1">Annexure 3</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Check List of Bills / Vouchers</p>
+          <p class="text-xs text-emerald-600 mt-3 font-medium">Annexure 2 will auto-generate</p>
+        </button>
+
+       
+
+        <button onclick="app.selectAnnexure('2')" class="group relative bg-white rounded-2xl border-2 border-slate-200 p-6 text-left hover:border-primary-400 hover:shadow-lg hover:shadow-primary-100 transition-all duration-300 hover:-translate-y-1">
+        <div class="w-12 h-12 bg-slate-100 text-slate-600 rounded-xl flex items-center justify-center mb-4">
+          <i data-lucide="mail" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-bold text-slate-800 mb-1">Annexure 2</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">Covering Letter Format (Single Claim style)</p>
+        <p class="text-xs text-slate-400 mt-3 font-medium">Fill directly with enclosures checklist</p>
+        </button>
+      </div>
+
+      <div class="mt-8 text-center">
+        <button onclick="app.goToPatients()" class="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-primary-600 transition-colors">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          Back to Patients
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="annexure3-fill-screen" class="screen">
+  <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+    <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-5 sm:px-8">
+      <div class="flex items-center gap-3">
+        <div class="bg-white/20 p-2 rounded-lg">
+          <i data-lucide="clipboard-list" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <h2 class="text-xl font-bold text-white">Annexure 3 &mdash; Check List of Bills</h2>
+          <p class="text-emerald-100 text-sm mt-0.5">Fill bill details for each patient. Amounts calculate automatically.</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-6 sm:p-8">
+
+      <div class="bg-blue-50 border-l-4 border-primary-500 rounded-r-lg p-4 mb-6 flex items-start gap-3 no-print">
+        <i data-lucide="info" class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5"></i>
+        <p class="text-sm text-slate-700">Use the tabs below to switch between patients. Your bill entries are preserved when adding more rows.</p>
+      </div>
+
+      <div class="patient-tabs no-print flex flex-wrap gap-1 mb-0 border-b-2 border-slate-200 pb-0" id="a3-tabs"></div>
+      <div id="a3-panels" class="mt-4"></div>
+
+      <div class="no-print bg-slate-50 border border-slate-200 rounded-xl p-4 mb-6 flex items-start gap-3">
+        <input type="checkbox" id="combined-a3-toggle" class="mt-0.5 w-5 h-5 rounded border-slate-300 text-primary-600 focus:ring-primary-500 cursor-pointer" onchange="app.toggleCombinedA3()">
+        <label for="combined-a3-toggle" class="text-sm text-slate-700 cursor-pointer select-none">
+          <span class="font-semibold">Generate single combined Annexure 3</span>
+          <span class="block text-slate-500 mt-0.5">List all patients' bills in one combined sheet instead of generating separate Annexure 3 for each patient.</span>
+        </label>
+      </div>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-100 no-print">
+        <button onclick="app.goBackFromA3()" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-slate-600 bg-slate-100 rounded-xl hover:bg-slate-200 transition-colors w-full sm:w-auto">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          Back
+        </button>
+        <button onclick="app.generateOutput()" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-medium text-white bg-emerald-600 rounded-xl hover:bg-emerald-700 shadow-sm shadow-emerald-200 transition-all hover:shadow-md w-full sm:w-auto">
+          <i data-lucide="file-check" class="w-4 h-4"></i>
+          Generate Final Forms
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="annexure2-direct-screen" class="screen">
+  <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+    <div class="bg-gradient-to-r from-slate-700 to-slate-800 px-6 py-5 sm:px-8">
+      <div class="flex items-center gap-3">
+        <div class="bg-white/20 p-2 rounded-lg">
+          <i data-lucide="mail" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <h2 class="text-xl font-bold text-white">Annexure 2 &mdash; Covering Letter</h2>
+          <p class="text-slate-300 text-sm mt-0.5">Direct fill mode for single claim</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-6 sm:p-8">
+      <div class="bg-amber-50 border-l-4 border-amber-400 rounded-r-lg p-4 mb-6 flex items-start gap-3 no-print">
+        <i data-lucide="alert-circle" class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"></i>
+        <p class="text-sm text-slate-700">You have chosen to fill Annexure 2 directly. Enter the details below.</p>
+      </div>
+      <div id="annexure2-direct-form"></div>
+      
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-100 no-print">
+  <button onclick="app.goToAnnexureChoice()" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-slate-600 bg-slate-100 rounded-xl hover:bg-slate-200 transition-colors w-full sm:w-auto">
+    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+    Back
+  </button>
+  <div class="flex items-center gap-3 w-full sm:w-auto">
+    <span id="a2-save-status" class="text-xs font-medium text-emerald-600"></span>
+    <button onclick="app.saveAnnexure2Data()" class="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-primary-700 bg-primary-50 border border-primary-200 rounded-xl hover:bg-primary-100 transition-colors w-full sm:w-auto">
+      <i data-lucide="save" class="w-4 h-4"></i>
+      Save
+    </button>
+    <button onclick="app.goFillAnnexure3FromA2()" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-medium text-white bg-emerald-600 rounded-xl hover:bg-emerald-700 shadow-sm shadow-emerald-200 transition-all hover:shadow-md w-full sm:w-auto">
+      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      Fill Annexure 3
+    </button>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
+<div id="output-single-screen" class="screen">
+  <div class="no-print mb-6">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="bg-emerald-100 text-emerald-600 p-2.5 rounded-xl">
+            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-slate-800">Generated Forms</h2>
+            <p class="text-sm text-slate-500">Single Claim &mdash; Ready to print</p>
+          </div>
+        </div>
+          <div class="flex flex-wrap gap-2 w-full sm:w-auto">
+          <button onclick="app.printAllSingle()" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-primary-600 rounded-xl hover:bg-primary-700 shadow-sm transition-all">
+            <i data-lucide="printer" class="w-4 h-4"></i>
+            Print All
+          </button>
+          <button onclick="app.exportData()" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-primary-700 bg-primary-50 border border-primary-200 rounded-xl hover:bg-primary-100 transition-colors">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            Export
+          </button>
+          <button onclick="app.editAgain()" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-slate-600 bg-slate-100 rounded-xl hover:bg-slate-200 transition-colors">
+            <i data-lucide="pencil" class="w-4 h-4"></i>
+            Edit
+          </button>
+          <button onclick="app.goHome()" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-slate-600 bg-slate-100 rounded-xl hover:bg-slate-200 transition-colors">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            New
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="single-output-container"></div>
+</div>
+
+<div id="output-multiple-screen" class="screen">
+  <div class="no-print mb-6">
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="bg-emerald-100 text-emerald-600 p-2.5 rounded-xl">
+            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-slate-800">Generated Forms</h2>
+            <p class="text-sm text-slate-500">Multiple Claims &mdash; Ready to print</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2 w-full sm:w-auto">
+          <button onclick="app.printAllMultiple()" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-primary-600 rounded-xl hover:bg-primary-700 shadow-sm transition-all">
+            <i data-lucide="printer" class="w-4 h-4"></i>
+            Print All
+          </button>
+          <button onclick="app.exportData()" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-primary-700 bg-primary-50 border border-primary-200 rounded-xl hover:bg-primary-100 transition-colors">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            Export
+          </button>
+          <button onclick="app.editAgain()" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-slate-600 bg-slate-100 rounded-xl hover:bg-slate-200 transition-colors">
+            <i data-lucide="pencil" class="w-4 h-4"></i>
+            Edit
+          </button>
+          <button onclick="app.goHome()" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-slate-600 bg-slate-100 rounded-xl hover:bg-slate-200 transition-colors">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            New
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="multiple-output-container"></div>
+</div>
+
+
+<div id="privacy-confirm-modal" class="privacy-modal-overlay hidden">
+  <div class="privacy-modal-box">
+    <div class="privacy-modal-header">
+      <div class="privacy-modal-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div>
+        <h3 class="privacy-modal-title">Before you go</h3>
+        <p class="privacy-modal-text">Your bank details, DGEHS card number, and address are saved in this browser until you clear them. If this is a shared or public computer, clear your data once you're done printing.</p>
+      </div>
+    </div>
+    <div class="privacy-modal-actions">
+      <button onclick="app.closePrivacyModal()" class="privacy-btn privacy-btn-secondary">Keep Data</button>
+      <button onclick="app.clearAllDataFromModal()" class="privacy-btn privacy-btn-danger">Clear Saved Data</button>
+    </div>
+    <button onclick="app.closePrivacyModal()" class="privacy-modal-close">Close</button>
+  </div>
+</div>
+
+</main>
+
+<script language="javascript" src="app/app.js"></script>
+</body>
+</html>
