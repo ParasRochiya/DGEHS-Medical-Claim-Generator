@@ -41,7 +41,7 @@ font-size: 13px; line-height: 1.5; color: #1e293b; }
     margin: 0;
     background: white;
     font-family: 'Inter', system-ui, sans-serif;
-    width: 100%;
+    width: 190mm;
     min-height: 277mm;
     box-sizing: border-box;
     overflow: hidden;
@@ -616,6 +616,11 @@ font-size: 13px; line-height: 1.5; color: #1e293b; }
         @media (max-width: 850px) {
             body {
                 padding: 10px;
+            }
+
+
+            .annexure-sheet{
+                width: 100%;
             }
 
             .app-shell {
