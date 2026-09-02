@@ -818,34 +818,40 @@
     <div class="p-6 sm:p-8">
       <div class="bg-blue-50 border-l-4 border-primary-500 rounded-r-lg p-4 mb-6 flex items-start gap-3">
         <i data-lucide="lightbulb" class="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5"></i>
-        <p class="text-sm text-slate-700">For Single Claim, choose which annexure you want to fill. <strong class="text-primary-700">Annexure 3 is recommended</strong> &mdash; Annexure 2 will auto-generate.</p>
+        <p class="text-sm text-slate-700">For Single Claim, choose which annexure you want to fill. <strong class="text-primary-700">Annexure 2 is recommended</strong> &mdash; Then Fill Annexure 3 will auto-generate.</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
-        <button onclick="app.selectAnnexure('3')" class="group relative bg-white rounded-2xl border-2 border-emerald-200 p-6 text-left hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-100 transition-all duration-300 hover:-translate-y-1">
+       
+
+       
+
+        <button onclick="app.selectAnnexure('2')" class="group relative bg-white rounded-2xl border-2 border-emerald-200 p-6 text-left hover:border-primary-400 hover:shadow-lg hover:shadow-primary-100 transition-all duration-300 hover:-translate-y-1">
+
           <div class="absolute top-3 right-3">
             <span class="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-1 rounded-full">
               <i data-lucide="star" class="w-3 h-3"></i>
               Recommended
             </span>
           </div>
-          <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="clipboard-list" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-lg font-bold text-slate-800 mb-1">Annexure 3</h3>
-          <p class="text-sm text-slate-500 leading-relaxed">Check List of Bills / Vouchers</p>
-          <p class="text-xs text-emerald-600 mt-3 font-medium">Annexure 2 will auto-generate</p>
-        </button>
-
-       
-
-        <button onclick="app.selectAnnexure('2')" class="group relative bg-white rounded-2xl border-2 border-slate-200 p-6 text-left hover:border-primary-400 hover:shadow-lg hover:shadow-primary-100 transition-all duration-300 hover:-translate-y-1">
         <div class="w-12 h-12 bg-slate-100 text-slate-600 rounded-xl flex items-center justify-center mb-4">
           <i data-lucide="mail" class="w-6 h-6"></i>
         </div>
         <h3 class="text-lg font-bold text-slate-800 mb-1">Annexure 2</h3>
         <p class="text-sm text-slate-500 leading-relaxed">Covering Letter Format (Single Claim style)</p>
         <p class="text-xs text-slate-400 mt-3 font-medium">Fill directly with enclosures checklist</p>
+        <p class="text-xs text-emerald-600 mt-3 font-medium">Annexure 2 will auto-generate</p>
+        </button>
+
+
+         <button onclick="app.selectAnnexure('3')" class="group relative bg-white rounded-2xl border-2 border-slate-200 p-6 text-left hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-100 transition-all duration-300 hover:-translate-y-1">
+          
+          <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4">
+            <i data-lucide="clipboard-list" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-800 mb-1">Annexure 3</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">Check List of Bills / Vouchers</p>
+          
         </button>
       </div>
 
