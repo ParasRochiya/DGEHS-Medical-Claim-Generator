@@ -41,7 +41,7 @@ font-size: 13px; line-height: 1.5; color: #1e293b; }
     margin: 0;
     background: white;
     font-family: 'Inter', system-ui, sans-serif;
-    width: 190mm;
+    width: 100%;
     min-height: 277mm;
     box-sizing: border-box;
     overflow: hidden;
