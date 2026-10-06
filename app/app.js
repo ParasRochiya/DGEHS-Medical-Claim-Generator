@@ -371,9 +371,7 @@ var app = {
   { id: 'place-of-posting', label: 'Place of Posting' },
   { id: 'card-holder-name', label: 'DGEHS Card Holder Name' },
   { id: 'claim-date', label: 'Date' },
-  { id: 'dgehs-card-no', label: 'DGEHS Card No.' },
-  { id: 'bank-account', label: 'Bank Account No.' },
-  { id: 'ifsc-code', label: 'IFSC Code' }
+  { id: 'dgehs-card-no', label: 'DGEHS Card No.' }
     ];
       if (!validateRequiredFields(requiredFields)) {
         return;
