@@ -1,4 +1,3 @@
-
 var appData = {
   mode: '',
   common: {
@@ -545,6 +544,7 @@ goHome: function() {
     tabsEl.innerHTML = tabs;
     panelsEl.innerHTML = panels;
     appData.patients.forEach(function(p, i) { app.calcTotal(i); });
+    if (window.lucide) lucide.createIcons();
   },
   renderBills: function(pIdx) {
     var p = appData.patients[pIdx];
@@ -556,8 +556,8 @@ goHome: function() {
         '<td class="border border-slate-300 px-2 py-2"><input type="text" class="bill-hospital w-full min-w-0 box-border px-2 py-1 bg-white border border-slate-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all" data-p="' + pIdx + '" data-b="' + i + '" value="' + escapeHtml(b.hospital) + '" placeholder="Hospital name"></td>' +
         '<td class="border border-slate-300 px-2 py-2"><input type="text" class="bill-no w-full min-w-[60px] box-border px-2 py-1 bg-white border border-slate-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all text-center" data-p="' + pIdx + '" data-b="' + i + '" value="' + escapeHtml(b.billNo) + '"></td>' +
         '<td class="border border-slate-300 px-2 py-2"><input type="date" class="bill-date w-full min-w-0 box-border px-2 py-1 bg-white border border-slate-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all text-center" data-p="' + pIdx + '" data-b="' + i + '" value="' + escapeHtml(b.date) + '" placeholder="DD/MM/YY"></td>' +
-        '<td class="border border-slate-300 px-2 py-2"><input type="number" class="bill-amt w-full min-w-0 box-border px-2 py-1 bg-white border border-slate-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all text-right" data-p="' + pIdx + '" data-b="' + i + '" value="' + escapeHtml(b.amount) + '" onchange="app.calcTotal(' + pIdx + ')"></td>' +
-        '<td class="border border-slate-300 px-2 py-2"><select class="bill-type min-w-[80px] w-full min-w-0 box-border px-2 py-1 bg-white border border-slate-200 rounded text-sm" data-p="' + pIdx + '" data-b="' + i + '">' +
+        '<td class="border border-slate-300 px-2 py-2"><input type="number" class="bill-amt w-full min-w-[100px] box-border px-2 py-1 bg-white border border-slate-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all text-right" data-p="' + pIdx + '" data-b="' + i + '" value="' + escapeHtml(b.amount) + '" onchange="app.calcTotal(' + pIdx + ')"></td>' +
+        '<td class="border border-slate-300 px-2 py-2"><select class="bill-type min-w-[80px] w-full box-border px-2 py-1 bg-white border border-slate-200 rounded text-sm" data-p="' + pIdx + '" data-b="' + i + '">' +
           '<option value="OPD"' + ((b.type || 'OPD') === 'OPD' ? ' selected' : '') + '>OPD</option>' +
           '<option value="Indoor"' + (b.type === 'Indoor' ? ' selected' : '') + '>Indoor</option>' +
         '</select></td>' +
@@ -567,10 +567,10 @@ goHome: function() {
           '<option value="Investigation"' + (b.category === 'Investigation' ? ' selected' : '') + '>Investigation</option>' +
           '<option value="Other"' + (b.category === 'Other' ? ' selected' : '') + '>Other</option>' +
         '</select></td>' +
-        '<td class="border border-slate-300 px-2 py-2"><input type="text" class="bill-pb w-full min-w-[60px] box-border px-2 py-1 bg-white border border-slate-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all text-center" data-p="' + pIdx + '" data-b="' + i + '" value="' + escapeHtml(b.pageBill) + '"></td>' +
-        '<td class="border border-slate-300 px-2 py-2"><input type="text" class="bill-pp w-full min-w-[60px] box-border px-2 py-1 bg-white border border-slate-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all text-center" data-p="' + pIdx + '" data-b="' + i + '" value="' + escapeHtml(b.pagePrescription) + '"></td>' +
-        '<td class="border border-slate-300 px-2 py-2"><input type="text" class="bill-pt w-full min-w-[60px] box-border px-2 py-1 bg-white border border-slate-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all text-center" data-p="' + pIdx + '" data-b="' + i + '" value="' + escapeHtml(b.pageTestReport) + '"></td>' +
-        '<td class="border border-slate-300 px-2 py-2 text-center no-print"><button onclick="app.removeBill(' + pIdx + ',' + i + ')" class="text-red-500 hover:text-red-700 hover:bg-red-50 p-1 rounded transition-colors" title="Remove"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg></button></td>' +
+        '<td class="border border-slate-300 px-2 py-2"><input type="text" class="bill-pb w-full min-w-[50px] box-border px-2 py-1 bg-white border border-slate-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all text-center" data-p="' + pIdx + '" data-b="' + i + '" value="' + escapeHtml(b.pageBill) + '"></td>' +
+        '<td class="border border-slate-300 px-2 py-2"><input type="text" class="bill-pp w-full min-w-[50px] box-border px-2 py-1 bg-white border border-slate-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all text-center" data-p="' + pIdx + '" data-b="' + i + '" value="' + escapeHtml(b.pagePrescription) + '"></td>' +
+        '<td class="border border-slate-300 px-2 py-2"><input type="text" class="bill-pt w-full min-w-[50px] box-border px-2 py-1 bg-white border border-slate-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all text-center" data-p="' + pIdx + '" data-b="' + i + '" value="' + escapeHtml(b.pageTestReport) + '"></td>' +
+        '<td class="border border-slate-300 px-2 py-2 text-center no-print"><div class="flex items-center justify-center gap-1"><button onclick="app.moveBill(' + pIdx + ',' + i + ',-1)" class="p-1 inline-flex items-center justify-center rounded border transition-colors text-slate-600 bg-slate-50 border-slate-200 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed" title="Move row up"' + (i === 0 ? ' disabled' : '') + '><i data-lucide="chevron-up" class="w-4 h-4"></i></button><button onclick="app.moveBill(' + pIdx + ',' + i + ',1)" class="p-1 inline-flex items-center justify-center rounded border transition-colors text-slate-600 bg-slate-50 border-slate-200 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed" title="Move row down"' + (i === p.bills.length - 1 ? ' disabled' : '') + '><i data-lucide="chevron-down" class="w-4 h-4"></i></button><button onclick="app.duplicateBill(' + pIdx + ',' + i + ')" class="p-1 inline-flex items-center justify-center rounded border transition-colors text-primary-700 bg-primary-50 border-primary-200 hover:bg-primary-100" title="Duplicate row"><i data-lucide="copy-plus" class="w-4 h-4"></i></button><button onclick="app.removeBill(' + pIdx + ',' + i + ')" class="text-red-500 hover:text-red-700 hover:bg-red-50 p-1 rounded transition-colors" title="Remove"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg></button></div></td>' +
       '</tr>';
     });
     return html;
@@ -594,6 +594,7 @@ goHome: function() {
     appData.patients[pIdx].bills.push({hospital:'',billNo:'',date:'',amount:'',type:'OPD',category:'Consultation',pageBill:'',pagePrescription:'',pageTestReport:''});
     saveToStorage();
     document.getElementById('bills-body-' + pIdx).innerHTML = this.renderBills(pIdx);
+    if (window.lucide) lucide.createIcons();
     this.calcTotal(pIdx);
   },
   removeBill: function(pIdx, bIdx) {
@@ -602,6 +603,29 @@ goHome: function() {
     appData.patients[pIdx].bills.splice(bIdx, 1);
     saveToStorage();
     document.getElementById('bills-body-' + pIdx).innerHTML = this.renderBills(pIdx);
+    if (window.lucide) lucide.createIcons();
+    this.calcTotal(pIdx);
+  },
+  duplicateBill: function(pIdx, bIdx) {
+    this.saveBillsForPatient(pIdx);
+    var bills = appData.patients[pIdx].bills;
+    bills.splice(bIdx + 1, 0, JSON.parse(JSON.stringify(bills[bIdx])));
+    saveToStorage();
+    document.getElementById('bills-body-' + pIdx).innerHTML = this.renderBills(pIdx);
+    if (window.lucide) lucide.createIcons();
+    this.calcTotal(pIdx);
+  },
+  moveBill: function(pIdx, bIdx, dir) {
+    this.saveBillsForPatient(pIdx);
+    var bills = appData.patients[pIdx].bills;
+    var target = bIdx + dir;
+    if (target < 0 || target >= bills.length) return;
+    var tmp = bills[bIdx];
+    bills[bIdx] = bills[target];
+    bills[target] = tmp;
+    saveToStorage();
+    document.getElementById('bills-body-' + pIdx).innerHTML = this.renderBills(pIdx);
+    if (window.lucide) lucide.createIcons();
     this.calcTotal(pIdx);
   },
   saveBillsForPatient: function(pIdx) {
